@@ -1,7 +1,7 @@
-export const getPromptResponses = () => {
+export const getPromptResponses = (promptInput) => {
   
   const data = {
-    prompt: "Say this is a test",
+    prompt: promptInput,
     temperature: 0.5,
     max_tokens: 64,
     top_p: 1.0,

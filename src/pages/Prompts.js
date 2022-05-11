@@ -9,11 +9,9 @@ const Prompts = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
   
-     const response = await getPromptResponses()
-
+     const response = await getPromptResponses(promptInput)
      const { choices } = await response.json()
   
-     console.log(choices[0].text);
      setResult(choices[0].text);
      setPromptInput("");
   }
