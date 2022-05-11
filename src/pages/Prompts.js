@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getPromptResponses } from "../pages/api/generate"
+import Results from "./Results"; 
 
 const Prompts = () => {
 
@@ -11,6 +12,7 @@ const Prompts = () => {
   
      const response = await getPromptResponses(promptInput)
      const res = await response.json()
+     console.log(res)
   
      setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
      console.log(results)
@@ -19,7 +21,8 @@ const Prompts = () => {
 
   return (
     <div>
-        <h3>The Prompt Shop</h3>
+        <h1>The Prompt Shop</h1>
+
         <form onSubmit={onSubmit}>
           <input
             type="text"
@@ -29,18 +32,19 @@ const Prompts = () => {
             onChange={(e) => setPromptInput(e.target.value)}
           />
           <input type="submit" value="Generate Results" />
+        </form>
 
-          {results.map(res => {
+        {results.map(res => {
             return (
-            <div key={res.id}>
-              <div>{res.prompt}</div>
-              <div>{res.result}</div>
-            </div>
+              <Results 
+                key={res.key}
+                prompt={res.prompt}
+                result={res.result}   
+              />
             )
           })
+        }
 
-          }
-        </form>
     </div>
   );
 }
