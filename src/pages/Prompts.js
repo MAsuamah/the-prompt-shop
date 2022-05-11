@@ -4,15 +4,16 @@ import { getPromptResponses } from "../pages/api/generate"
 const Prompts = () => {
 
   const [promptInput, setPromptInput] = useState("");
-  const [result, setResult] = useState();
+  const [results, setResults] = useState([]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
   
      const response = await getPromptResponses(promptInput)
-     const { choices } = await response.json()
+     const res = await response.json()
   
-     setResult(choices[0].text);
+     setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
+     console.log(results)
      setPromptInput("");
   }
 
@@ -28,7 +29,17 @@ const Prompts = () => {
             onChange={(e) => setPromptInput(e.target.value)}
           />
           <input type="submit" value="Generate Results" />
-          <div>{result}</div>
+
+          {results.map(res => {
+            return (
+            <div key={res.id}>
+              <div>{res.prompt}</div>
+              <div>{res.result}</div>
+            </div>
+            )
+          })
+
+          }
         </form>
     </div>
   );
