@@ -13,7 +13,7 @@ export const getPromptResponses = (promptInput) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: 'Bearer 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',
+      Authorization: 'Bearer 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',
     },
     body: JSON.stringify(data),
    });;

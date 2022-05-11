@@ -1,22 +1,38 @@
 import { useState } from "react";
 import { getPromptResponses } from "../pages/api/generate"
-import Results from "./Results"; 
+import Results from "./Results";
+import Card from 'react-bootstrap/Card'
 
 const Prompts = () => {
 
   const [promptInput, setPromptInput] = useState("");
   const [results, setResults] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('')
 
   const onSubmit = async (event) => {
     event.preventDefault();
-  
-     const response = await getPromptResponses(promptInput)
-     const res = await response.json()
-     console.log(res)
-  
-     setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
-     console.log(results)
-     setPromptInput("");
+
+    if(!promptInput) {
+      return false
+    }
+
+    try {
+      const response = await getPromptResponses(promptInput)
+
+      if(!response.ok) {
+        throw new Error('something went wrong!')
+      } 
+
+      const res = await response.json()
+      console.log(res)
+      setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
+      console.log(results)
+      setPromptInput("");
+    }
+
+    catch(err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -36,15 +52,17 @@ const Prompts = () => {
 
         {results.map(res => {
             return (
-              <Results 
-                key={res.key}
-                prompt={res.prompt}
-                result={res.result}   
-              />
+              <Card key={res.id}>
+                <Card.Body>      
+                  <Results 
+                    prompt={res.prompt}
+                    result={res.result}   
+                  />
+                </Card.Body>
+              </Card>
             )
           })
         }
-
     </div>
   );
 }
