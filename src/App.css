@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+#result-bg {
+  background-image: url(../src/images/andrea-de-santis-zwd435-ewb4-unsplash.jpg);
+  background-size: cover;
+  height: 100vh;
+}
