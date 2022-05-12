@@ -1,3 +1,5 @@
+import { config } from "../../utils/config";
+
 export const getPromptResponses = (promptInput) => {
   
   const data = {
@@ -13,7 +15,7 @@ export const getPromptResponses = (promptInput) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: 'Bearer ',
+      Authorization: `Bearer ${config.OPENAI_SECRET}`,
     },
     body: JSON.stringify(data),
    });;
