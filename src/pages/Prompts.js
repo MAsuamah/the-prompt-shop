@@ -15,16 +15,18 @@ const Prompts = () => {
     event.preventDefault();
 
     if(!promptInput) {
+      setErrorMessage('Please enter a prompt!')
       return false
     }
 
     try {
+      setErrorMessage('')
+
       const response = await getPromptResponses(promptInput)
 
       if(!response.ok) {
         throw new Error('something went wrong!')
       } 
-
       const res = await response.json()
       console.log(res)
       setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
@@ -39,7 +41,7 @@ const Prompts = () => {
 
   return (
     <Row>
-      <Col md={5} id="result-bg">
+      <Col md={5} id="summary-bg">
         <header>
           <h1 className="bg-opacity">The Prompt Shop</h1>
         </header>
@@ -55,10 +57,18 @@ const Prompts = () => {
             onChange={(e) => setPromptInput(e.target.value)}
           />
           <input type="submit" value="Generate Results" />
+          <input type="submit" onClick={(e) => setPromptInput(e.target.value)}value="Say this is a test"></input>
+          <input type="submit" onClick={(e) => setPromptInput(e.target.value)}value="Write a poem about a dog wearing skis"></input>
         </form>
+        {errorMessage && (
+          <div>
+            <p className="error-text">{errorMessage}</p>
+          </div>           
+        )}
       </Col>
 
       <Col md={7} >
+        <h3>Your Results</h3>
         {results.map(res => {
             return (
               <Card key={res.id}>

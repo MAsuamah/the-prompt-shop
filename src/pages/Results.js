@@ -4,8 +4,8 @@ const Results = (props) => {
 
   return (
     <>
-      <div>{props.prompt}</div>
-      <div>{props.result}</div>
+      <div>Prompt: {props.prompt}</div>
+      <div>Result: {props.result}</div>
     </>
   );
 }
