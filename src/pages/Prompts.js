@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { getPromptResponses } from "../pages/api/generate"
+import { getPromptResponses } from "./api/generate"
 import Results from "./Results";
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 const Prompts = () => {
 
@@ -43,18 +44,18 @@ const Prompts = () => {
     <Row>
       <Col md={5} id="summary-bg">
         <header>
-          <h1 className="bg-opacity">The Prompt Shop</h1>
+          <h1 className="bg-opacity headers">The Prompt Shop</h1>
         </header>
-        <summary className="bg-opacity">
-          Welcome to the Prompt Shop! Enter a prompt and receive fun responses from the <a href="https://beta.openai.com/" target="_blank" rel="noreferrer">OpenAI</a> API. Click on a preset example prompt below to see a response or try your own!
+        <summary className="bg-opacity" id="sum">
+          Welcome to The Prompt Shop! Enter a prompt and receive fun responses from the <a href="https://beta.openai.com/" target="_blank" rel="noreferrer">OpenAI</a> API. Click on a preset example prompt below to see a response or try your own!
         </summary>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="prompt"
+        <form onSubmit={onSubmit} id="prompt-form">
+          <textarea
             placeholder="Enter a Prompt"
+            form="prompt-form"
+            name="prompt"
             value={promptInput}
-            onChange={(e) => setPromptInput(e.target.value)}
+            onChange={(e) => setPromptInput(e.target.value)}  
           />
           <input type="submit" value="Generate Results" />
           <input type="submit" onClick={(e) => setPromptInput(e.target.value)}value="Say this is a test"></input>
@@ -67,11 +68,11 @@ const Prompts = () => {
         )}
       </Col>
 
-      <Col md={7} >
-        <h3>Your Results</h3>
+      <Col md={7} className="res-scroll">
+        <h3 className="headers" id="res-header">Your Results</h3>
         {results.map(res => {
             return (
-              <Card key={res.id}>
+              <Card key={res.id} className="prompt-card">
                 <Card.Body>      
                   <Results 
                     prompt={res.prompt}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Space+Mono:wght@400;700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
@@ -14,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #CBA18C;
+  font-family: 'Space Mono', monospace;
 }
 
 code {

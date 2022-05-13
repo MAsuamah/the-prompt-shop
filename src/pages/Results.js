@@ -4,7 +4,7 @@ const Results = (props) => {
 
   return (
     <>
-      <div>Prompt: {props.prompt}</div>
+      <div className="headers" id="prompt">Prompt: {props.prompt}</div>
       <div>Result: {props.result}</div>
     </>
   );
