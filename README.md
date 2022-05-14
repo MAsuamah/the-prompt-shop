@@ -15,15 +15,14 @@ The prompt shop web app uses the <a href="https://openai.com/api/" target="_blan
 ## Features
 
 ### Choose a Preset Prompt or Enter Your Own Prompts
-You can click on a preset prompt to get quickly get a response. You can also enter your own prompt in the text area then click "Generate Response" to get some fun responses!
+You can click on a preset prompt to get quickly get a response. You can also enter your own prompt in the text area then click the "Generate Response" button to get some fun responses!
 
 ### The Responses
 All of your responses will be stored in cards in the right column titled "Your Responses". Each card will present you with your prompt and the response generated, stored from newest to oldest.
 
-### Response Persistence
-If you need to reload the page or revisit at another time, your generated responses will remain in the 
+### Response Persistence and Clearing the Response History
+If you need to reload the page or revisit at another time, your generated responses will remain in the response column. To clear you response history, simply click the "Clear Responses" button.
 
-### Clear Response History
 
 ## Built With
 * React
