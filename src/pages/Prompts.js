@@ -29,7 +29,7 @@ const Prompts = () => {
       } 
       const res = await response.json()
       console.log(res)
-      setResults([...results, {id:res.id, prompt:promptInput, result:res.choices[0].text}]);
+      setResults([{id:res.id, prompt:promptInput, result:res.choices[0].text}, ...results]);
       console.log(results)
       setPromptInput("");
     }
