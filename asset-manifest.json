@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/the-prompt-shop/static/css/main.754d2d6e.css",
-    "main.js": "/the-prompt-shop/static/js/main.04955061.js",
+    "main.css": "/the-prompt-shop/static/css/main.99464b3f.css",
+    "main.js": "/the-prompt-shop/static/js/main.884e09b2.js",
     "static/media/andrea-de-santis-zwd435-ewb4-unsplash.jpg": "/the-prompt-shop/static/media/andrea-de-santis-zwd435-ewb4-unsplash.47e3460ffb389ed361d9.jpg",
     "index.html": "/the-prompt-shop/index.html",
-    "main.754d2d6e.css.map": "/the-prompt-shop/static/css/main.754d2d6e.css.map",
-    "main.04955061.js.map": "/the-prompt-shop/static/js/main.04955061.js.map"
+    "main.99464b3f.css.map": "/the-prompt-shop/static/css/main.99464b3f.css.map",
+    "main.884e09b2.js.map": "/the-prompt-shop/static/js/main.884e09b2.js.map"
   },
   "entrypoints": [
-    "static/css/main.754d2d6e.css",
-    "static/js/main.04955061.js"
+    "static/css/main.99464b3f.css",
+    "static/js/main.884e09b2.js"
   ]
 }
