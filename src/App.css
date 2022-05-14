@@ -114,6 +114,10 @@ textarea {
   padding: 10px;
 }
 
+#clear{
+  background-color: #874B41;
+}
+
 .error-text {
   color: white;
   background-color: #874B41;

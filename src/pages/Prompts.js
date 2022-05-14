@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getPromptResponses } from "./api/generate"
 import Results from "./Results";
 import Card from 'react-bootstrap/Card'
@@ -8,8 +8,13 @@ import Col from 'react-bootstrap/Col'
 const Prompts = () => {
 
   const [promptInput, setPromptInput] = useState("");
-  const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState('')
+  const [results, setResults] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("results");
+    const savedResults = JSON.parse(saved);
+    return savedResults || [];
+  });
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -39,6 +44,16 @@ const Prompts = () => {
     }
   }
 
+  const clearResults = () => {
+    localStorage.clear();
+    setResults([])
+  }
+
+  useEffect(() => {
+    localStorage.setItem("results", JSON.stringify(results));
+  }, [results]);
+  
+
   return (
     
       <Row className="row-style">
@@ -63,13 +78,13 @@ const Prompts = () => {
                 cols="32"
               />
               <input className="gen-btn" type="submit" value="Generate Results" />
-    
             </form>
             {errorMessage && (
               <div>
                 <p className="error-text">{errorMessage}</p>
               </div>           
             )}
+            <button onClick={() => clearResults()} className="gen-btn" id="clear">Clear Results</button>
           </div>
         </Col>
 
