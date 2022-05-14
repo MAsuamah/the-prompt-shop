@@ -60,9 +60,9 @@ const Prompts = () => {
             <h1 className="bg-opacity headers">The Prompt Shop</h1>
           </header>
           <div className="bg-opacity sum-box" >
-            <summary id="sum">
+            <div id="sum">
               Welcome to The Prompt Shop! Enter a prompt and receive fun responses from the <a href="https://beta.openai.com/" target="_blank" rel="noreferrer">OpenAI</a> API. Click on a preset example prompt below to see a response or try your own!
-            </summary>
+            </div>
             <form onSubmit={onSubmit} id="prompt-form">
               <input className="gen-btn" type="submit" onClick={(e) => setPromptInput(e.target.value)}value="How does a telescope work?"></input> 
               <input className="gen-btn" type="submit" onClick={(e) => setPromptInput(e.target.value)}value="Write a poem about a dog wearing skis"></input>
