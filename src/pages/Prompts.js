@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getPromptResponses } from "./api/generate"
-import Results from "./Results";
+import Responses from "./Responses";
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -9,11 +9,11 @@ const Prompts = () => {
 
   const [promptInput, setPromptInput] = useState("");
   const [errorMessage, setErrorMessage] = useState('')
-  const [results, setResults] = useState(() => {
+  const [responses, setResponse] = useState(() => {
     // getting stored value
-    const saved = localStorage.getItem("results");
-    const savedResults = JSON.parse(saved);
-    return savedResults || [];
+    const saved = localStorage.getItem("response");
+    const savedResponse = JSON.parse(saved);
+    return savedResponse || [];
   });
 
   const onSubmit = async (event) => {
@@ -33,9 +33,7 @@ const Prompts = () => {
         throw new Error('something went wrong!')
       } 
       const res = await response.json()
-      console.log(res)
-      setResults([{id:res.id, prompt:promptInput, result:res.choices[0].text}, ...results]);
-      console.log(results)
+      setResponse([{id:res.id, prompt:promptInput, response:res.choices[0].text}, ...responses]);
       setPromptInput("");
     }
 
@@ -44,20 +42,20 @@ const Prompts = () => {
     }
   }
 
-  const clearResults = () => {
+  const clearResponses = () => {
     localStorage.clear();
-    setResults([])
+    setResponse([])
   }
 
   useEffect(() => {
-    localStorage.setItem("results", JSON.stringify(results));
-  }, [results]);
+    localStorage.setItem("response", JSON.stringify(responses));
+  }, [responses]);
   
 
   return (
     
       <Row className="row-style">
-        <Col md={5} id="summary-bg" className="res-scroll">
+        <Col lg={5} id="summary-bg" className="res-scroll">
           <header>
             <h1 className="bg-opacity headers">The Prompt Shop</h1>
           </header>
@@ -77,26 +75,26 @@ const Prompts = () => {
                 rows="4" 
                 cols="32"
               />
-              <input className="gen-btn" type="submit" value="Generate Results" />
+              <input className="gen-btn" type="submit" value="Generate Response" />
             </form>
             {errorMessage && (
               <div>
                 <p className="error-text">{errorMessage}</p>
               </div>           
             )}
-            <button onClick={() => clearResults()} className="gen-btn" id="clear">Clear Results</button>
+            <button onClick={() => clearResponses()} className="gen-btn" id="clear">Clear Responses</button>
           </div>
         </Col>
 
-        <Col md={7} className="res-scroll">
-          <h3 className="headers" id="res-header">Your Results</h3>
-          {results.map(res => {
+        <Col lg={7} className="res-scroll">
+          <h3 className="headers" id="res-header">Your Responses</h3>
+          {responses.map(res => {
               return (
                 <Card key={res.id} className="prompt-card">
                   <Card.Body>      
-                    <Results 
+                    <Responses
                       prompt={res.prompt}
-                      result={res.result}   
+                      response={res.response}   
                     />
                   </Card.Body>
                 </Card>
