@@ -1,12 +1,9 @@
-import { config } from "../../utils/config";
-
 export const getPromptResponses = (promptInput) => {
-  
+
   const data = {
     prompt: promptInput,
     temperature: 0.5,
     max_tokens: 64,
-    top_p: 1.0,
     frequency_penalty: 0.0,
     presence_penalty: 0.0,
    };
@@ -15,7 +12,7 @@ export const getPromptResponses = (promptInput) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${config.OPENAI_SECRET}`,
+      Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
     },
     body: JSON.stringify(data),
    });;
