@@ -59,7 +59,7 @@ const Prompts = () => {
           <header>
             <h1 className="bg-opacity headers">The Prompt Shop</h1>
           </header>
-          <div className="bg-opacity sum-box" >
+          <section className="bg-opacity sum-box" >
             <div id="sum">
               Welcome to The Prompt Shop! Enter a prompt and receive fun responses from the <a href="https://beta.openai.com/" target="_blank" rel="noreferrer">OpenAI</a> API. Click on a preset example prompt below to see a response or try your own!
             </div>
@@ -83,7 +83,7 @@ const Prompts = () => {
               </div>           
             )}
             <button onClick={() => clearResponses()} className="gen-btn" id="clear">Clear Responses</button>
-          </div>
+          </section>
         </Col>
 
         <Col lg={7} className="res-scroll">
