@@ -46,7 +46,7 @@ If you need to reload the page or revisit at another time, your generated respon
 * React-Bootstrap
 
 ## Website
-https://masuamah.github.io/the-prompt-shop/
+https://the-prompt-shop.netlify.app/
 
 ## Contributors
 Michelle Asuamah
