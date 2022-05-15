@@ -12,7 +12,7 @@ export const getPromptResponses = (promptInput) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+      Authorization: `Bearer ${process.env.REACT_APP_SECRET_CODE}`,
     },
     body: JSON.stringify(data),
    });;
